@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #links {
+  background-color: rgb(209, 131, 209);
+  
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1%;
+  padding-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  align-content: center;
+}
+
+#links > div {
+  display: flex;
+  list-style: none;
+  margin: auto;
+}
+#links a {
+  text-decoration: none;
+  color: black;
+  font-size: 23px
+}
+#links>div>img{
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+}
+
+
+#container{
+   
+    display: grid;
+    width: 100%;
+    margin: auto;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 40px;
+    /* justify-content: center; */
+    /* border: px solid green; */
+    text-align: center;
+    margin-top: 30px;
+
+
+}
+#container>div{
+    border: 1px solid green;
+}
+
+#container>div>img{
+    width: 200px;
+}
+button{
+    padding: 10px 50px;
+    background-color: orange;
+    border: 0px;
+    border-radius: 10px;
+
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <div id="links">
+    <div><img src="https://us.123rf.com/450wm/zhanna26/zhanna261709/zhanna26170900035/85712562-black-silhouette-of-cat-vector-illustration.jpg?ver=6"></div>
+    <div><a href="home.html">Home</a></div>
+    <div > <a href="products.html" style="text-decoration: underline">Products</a></div>
+    <div><a href="form.html">Put for Adoption</a></div>
+    <div><a href="Listed.html">Adoption Listing</a></div>
+    <div>cart</div>
+  </div>
+
+  <div id="container"></div>
+
+</body>
+</html>
+
+<script>
+
+    let container = document.getElementById("container")
+
+    var arr = [
+    {
+        "id": 0,
+        "name": "Whiskas Ocean Fish Flavour Adult Cat Dry Food",
+        "url":"https://supertails.com/cdn/shop/products/61HcCwYJDWL._SL1000.jpg?v=1700817567",
+        "price": "₹1,008"
+
+    },
+    {
+        "id": 1,
+        "name": "Whiskas Ocean Fish Flavour Adult Cat Dry Food",
+        "url":"https://supertails.com/cdn/shop/products/61HcCwYJDWL._SL1000.jpg?v=1700817567",
+        "price": "₹1,008"
+
+    },
+    {
+        "id": 2,
+        "name": "Whiskas Ocean Fish Flavour Adult Cat Dry Food",
+        "url":"https://supertails.com/cdn/shop/products/61HcCwYJDWL._SL1000.jpg?v=1700817567",
+        "price": "₹1,008"
+
+    }
+]
+
+arr.map((ele) =>{
+    console.log(ele);
+    let Img = document.createElement("img");
+    Img.src = ele.url;
+
+    let name = document.createElement("h4");
+    name.innerText = ele.name;
+
+    let price = document.createElement("h3");
+    price.innerText = ele.price;
+
+    let button = document.createElement("button");
+    button.innerText = "Add to Cart"
+
+    let div = document.createElement("div")
+    div.append(Img, name, price, button)
+
+    container.appendChild(div);
+    
+
+
+})
+
+
+
+</script>
