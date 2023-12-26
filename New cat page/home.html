@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Adoption</title>
+  <!-- <link rel="stylesheet" href="home.css" /> -->
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* body {
+  background-color: rgb(251, 234, 255);
+} */
+/* Navbar related css */
+
+#links {
+  background-color: rgb(209, 131, 209);
+  
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1%;
+  padding-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  align-content: center;
+}
+
+#links > div {
+  display: flex;
+  list-style: none;
+  margin: auto;
+}
+#links a {
+  text-decoration: none;
+  color: black;
+  font-size: 28px
+}
+
+#container{
+  margin-top: 20px;
+  display: flex;
+  /* border: 1px solid black; */
+  padding: 15px;
+  /* height: 600px; */
+}
+img{
+  width: 680px;;
+}
+p{
+  font-size: 20px
+}
+#image-box{
+  width: 95%;
+  /* border: 1px solid black; */
+  height: 300px; 
+  display: flex;
+  margin: auto;
+  margin-top: 30px;
+
+  
+  /* grid-template-rows: 10px; */
+  /* justify-content: space-evenly; */
+  padding: 10px;
+  
+  
+
+}
+#image-box>div{
+  margin: auto;
+  margin-left: 15px;
+}
+#image-box>div>img{
+  
+  width: 350px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 10px;
+
+}
+#image-box>div>button{
+  padding: 7px 15px;
+  border-radius: 10px;
+  background-color:purple;
+  color: white;
+  margin-top: 10px
+}
+#description{
+  
+  margin-top: 20px;
+  padding: 30px;
+  /* border: 1px solid black; */
+  background-color: #fff7df;
+}
+#links>div>img{
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+}
+#slideshowbox{
+    /* border: 1px solid black; */
+    width: 65%;
+    margin: auto;
+}
+
+#slideshowbox >img{
+width: 900px;
+}
+#AboutUs{
+    width: 95%;
+    border: 1px solid black;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#products{
+    border: 1px solid black;
+    width: 95%;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
+}
+#bestsellers{
+    display: grid;
+    width: 100%;
+    margin: auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
+    /* justify-content: center; */
+    border: px solid green;
+    text-align: center;
+    margin-top: 30px;
+
+}
+
+#bestsellers>div{
+    border: 1px solid black;
+
+}
+#bestsellers>div>div>img{
+    width: 250px;
+}
+#best-info{
+    border: 1px solid black;
+    /* background-color: rgb(201, 196, 196); */
+}
+#best-info{
+    line-height: 20px;
+}
+#best-info>p{
+    font-size: 12px;
+}
+button{
+    padding: 10px 50px;
+    background-color: orange;
+    border: 0px;
+    border-radius: 10px;
+
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="links">
+    <div><img src="https://us.123rf.com/450wm/zhanna26/zhanna261709/zhanna26170900035/85712562-black-silhouette-of-cat-vector-illustration.jpg?ver=6"></div>
+    <div><a href="homepage.html"  style="text-decoration: underline;">Home</a></div>
+    <div > <a href="products.html">Products</a></div>
+    <div><a href="form.html">Put for Adoption</a></div>
+    <div><a href="Listed.html">Adoption Listing</a></div>
+    <div>cart</div>
+  </div>
+
+  <div id="container">
+
+    <!-- Slideshow -->
+    <div id="slideshowbox">
+     </div>
+     
+  </div>
+  <div id="AboutUs">
+    <h2>About Us</h2>
+    <p>At PurrChase, we believe in creating a purr-fect world for cats and cat lovers alike. Our app is more than just a marketplace; it's a community dedicated to enhancing the lives of our feline friends.</p>
+    <br>
+    <p>At the heart of PurrChase is a passion for cats. Whether you're a devoted cat parent seeking high-quality products for your fur babies or someone looking to provide a loving forever home through adoption, PurrChase is your one-stop destination.</p>
+ </div>
+
+<div id="products">
+    <h2>Best Sellers</h2>
+    <div id="bestsellers">
+        <div>
+            <div><img src="https://supertails.com/cdn/shop/products/61HcCwYJDWL._SL1000.jpg?v=1700817567"></div>
+            <div id="best-info"><h4>Whiskas Ocean Fish Flavour Adult Cat Dry Food</h4>
+                <h3>₹1,008</h3>
+                <p>MRP ₹2,720</p>
+            </div>
+            <button>Add to cart</button>
+            
+        </div>
+        <div>
+            <div><img src="https://supertails.com/cdn/shop/products/CFODF0010AG_1.jpg?v=1696469762"></div>
+            <div id="best-info"><h4>Arden Grange Fresh Chicken & Potato Kitten Dry Food</h4>
+                <h3>₹599</h3>
+                <p>MRP ₹630</p>
+            </div>
+            <button>Add to cart</button>
+            
+        </div>
+        <div>
+            <div><img src="https://supertails.com/cdn/shop/products/1_c7ef34f5-8efc-4fe1-9bc1-331c5d35da09.jpg?v=1696598947"></div>
+            <div id="best-info"><h4>Purepet Lavender Scented Clumping Cat Litter</h4>
+                <h3>₹314</h3>
+                <p>MRP ₹680</p>
+            </div>
+            <button>Add to cart</button>
+            
+        </div>
+        <div>
+            <div><img src="https://supertails.com/cdn/shop/products/1_c7ef34f5-8efc-4fe1-9bc1-331c5d35da09.jpg?v=1696598947"></div>
+            <div id="best-info"><h3>Purepet Lavender Scented Clumping Cat Litter</h3>
+                <h2>₹314</h2>
+                <p>MRP ₹680</p>
+            </div>
+            <button>Add to cart</button>
+            
+        </div>
+
+
+    </div>
+
+</div>
+  
+</body>
+</html>
+
+<script>
+    let i = 0;
+    var images = [];
+
+    // ImageList
+    images[0] = "banner-1.jpg"
+    images[1] = "banner-2.jpg"
+    images[2] = "banner-3.jpg"
+
+    image_id = setInterval(function(){
+
+    if(i === images.length){
+        i = 0;
+    }
+    slideshowbox.innerHTML = null
+
+    let image = images[i]//image [0]
+    i++
+    // console.log("i", i);
+
+
+    // append the image
+    let img = document.createElement("img")
+    img.src = image;
+    slideshowbox.append(img);
+
+    }, 6000)
+
+   
+
+</script>
