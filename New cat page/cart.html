@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #links {
+  background-color:rgb(196 244 251);
+  
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1%;
+  padding-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  align-content: center;
+}
+
+#links > div {
+  display: flex;
+  list-style: none;
+  margin: auto;
+}
+#links a {
+  text-decoration: none;
+  color: black;
+  font-size: 23px
+}
+#links>div>img{
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+}
+
+
+#cart_container{
+   
+    display: grid;
+    width: 100%;
+    margin: auto;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 40px;
+    /* justify-content: center; */
+    /* border: px solid green; */
+    text-align: center;
+    margin-top: 30px;
+
+
+}
+#cart_container>div{
+    border: 1px solid green;
+}
+
+#cart_container>div>img{
+    width: 200px;
+}
+button{
+    padding: 10px 10px;
+    background-color: rgb(167, 10, 10);
+    border: 0px;
+    border-radius: 10px;
+    color: white;
+
+}
+
+#total_amount{
+    /* border: 1px solid black; */
+    font-size: 23px;
+    font-weight: 700;
+    width: 410px;
+    padding: 25px 10px 20px 20px ;
+    margin-left: 900px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+    </style>
+</head>
+<body>
+      <!-- Navbar -->
+  <div id="links">
+    <div><img src="https://us.123rf.com/450wm/zhanna26/zhanna261709/zhanna26170900035/85712562-black-silhouette-of-cat-vector-illustration.jpg?ver=6"></div>
+    <div><a href="home.html">Home</a></div>
+    <div > <a href="products.html">Products</a></div>
+    <div><a href="form.html">Put for Adoption</a></div>
+    <div><a href="Listed.html">Adoption Listing</a></div>
+    <div> <a href="cart.html"  style="text-decoration: underline" >Cart</a></div>
+  </div>
+    <div>
+        <div id="total_amount">Total Amount: $0</div>
+        <div id="cart_container"></div>
+    </div>
+   
+</body>
+</html>
+
+<script>
+     var totalAmount = 0; // Declare totalAmount outside the displayData function
+
+var DataArr = JSON.parse(localStorage.getItem("cart"));
+displayData(DataArr);
+
+function displayData(DataArr) {
+    document.querySelector("#cart_container").innerHTML = "";
+    totalAmount = 0;
+
+    DataArr.forEach(function (ele, index) {
+        let Img = document.createElement("img");
+        Img.src = ele.url;
+
+        let name = document.createElement("h4");
+        name.innerText = ele.name;
+
+        let price = document.createElement("h3");
+        price.innerText = "₹"+ ele.price;
+
+        totalAmount += Number(ele.price);
+
+        let remove_btn = document.createElement("button");
+        remove_btn.innerText = "Remove from cart";
+        remove_btn.addEventListener("click", removed);
+
+        function removed() {
+            totalAmount -= Number(ele.price);
+            var removed_data = DataArr.filter(function (ele, i) {
+                return i !== index;
+            });
+
+            displayData(removed_data);
+            localStorage.setItem("cart", JSON.stringify(removed_data));
+            updateTotalAmount();
+        }
+
+        let div = document.createElement("div");
+        div.append(Img, name, price, remove_btn);
+
+        document.querySelector("#cart_container").append(div);
+    });
+
+    updateTotalAmount();
+}
+
+function updateTotalAmount() {
+    document.querySelector("#total_amount").innerText =
+        "Total Amount: " + "₹"+  Number(totalAmount);
+}
+console.log(typeof(totalAmount))
+console.log((totalAmount))
+</script>
