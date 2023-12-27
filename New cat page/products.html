@@ -6,7 +6,7 @@
     <title>Document</title>
     <style>
         #links {
-  background-color: rgb(209, 131, 209);
+  background-color:rgb(196 244 251);
   
   display: flex;
   justify-content: space-evenly;
@@ -63,6 +63,32 @@ button{
 
 }
 
+/* category box */
+#category_box{
+    border: 1px solid black;
+    width: 60%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+}
+#category_box>div>img{
+    width: 130px;
+}
+#category_box>div{
+    margin: auto;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+#category_box>div>h3{
+    margin-top: -20px;
+}
+.select_category{
+    cursor: pointer;
+}
+
+
+
     </style>
 </head>
 <body>
@@ -73,7 +99,21 @@ button{
     <div > <a href="products.html" style="text-decoration: underline">Products</a></div>
     <div><a href="form.html">Put for Adoption</a></div>
     <div><a href="Listed.html">Adoption Listing</a></div>
-    <div>cart</div>
+    <div><a href="cart.html"> cart</a></div>
+  </div>
+  <div id="category_box">
+    <div class="select_category" onclick="handleFilter(this)" id="Food">
+        <img src="https://images.assetsdelivery.com/compings_v2/anatolir/anatolir2205/anatolir220500507.jpg">
+        <h3>Food</h3>
+    </div>
+    <div  class="select_category" onclick="handleFilter(this)" id="Liter Supplies">
+        <img src="https://st4.depositphotos.com/37452302/39030/v/450/depositphotos_390306158-stock-illustration-cutout-silhouette-cat-litter-toilet.jpg" width="250px">
+        <h3>Liter Supplies</h3>
+    </div>
+    <div  class="select_category" onclick="handleFilter(this)" id="Toys">
+        <img src="https://www.shutterstock.com/image-vector/cat-toys-icon-set-style-600nw-2371892131.jpg">
+        <h3>Toys</h3>
+    </div>
   </div>
 
   <div id="container"></div>
@@ -83,55 +123,165 @@ button{
 
 <script>
 
-    let container = document.getElementById("container")
+    let container = document.getElementById("container");
+ 
 
     var arr = [
     {
         "id": 0,
         "name": "Whiskas Ocean Fish Flavour Adult Cat Dry Food",
         "url":"https://supertails.com/cdn/shop/products/61HcCwYJDWL._SL1000.jpg?v=1700817567",
-        "price": "₹1,008"
+        "price": 1008,
+        "category": "Food"
 
     },
     {
         "id": 1,
-        "name": "Whiskas Ocean Fish Flavour Adult Cat Dry Food",
-        "url":"https://supertails.com/cdn/shop/products/61HcCwYJDWL._SL1000.jpg?v=1700817567",
-        "price": "₹1,008"
+        "name": "Arden Grange Fresh Chicken & Potato Kitten Dry Food",
+        "url":"https://supertails.com/cdn/shop/products/CFODF0010AG_1.jpg?v=1696469762",
+        "price": 599,
+        "category" : "Food"
 
     },
     {
         "id": 2,
-        "name": "Whiskas Ocean Fish Flavour Adult Cat Dry Food",
-        "url":"https://supertails.com/cdn/shop/products/61HcCwYJDWL._SL1000.jpg?v=1700817567",
-        "price": "₹1,008"
+        "name": "Purepet Lavender Scented Clumping Cat Litter",
+        "url":"https://supertails.com/cdn/shop/products/1_c7ef34f5-8efc-4fe1-9bc1-331c5d35da09.jpg?v=1696598947",
+        "price": 314,
+        "category" : "Liter Supplies"
+
+
+    },
+    {
+        "id": 3,
+        "name": "Drools Tuna & Bunito Creamy Cat Treats",
+        "url":"https://supertails.com/cdn/shop/files/TUNA-AND-BONITO.png?v=1700739770",
+        "price": 413,
+        "category" : "Food"
+
+
+    },
+    {
+        "id": 4,
+        "name": "Jinny Tuna Cat Treat",
+        "url":"https://supertails.com/cdn/shop/files/Frame10675_ce0ad534-f9cb-41de-8cc6-958990ab0e9a.png?v=1700908329",
+        "price": 493,
+        "category" : "Food"
+
+
+    },
+    {
+        "id": 5,
+        "name": "Savic Nestor Toilet Home for Cats (Cold Grey)",
+        "url":"https://supertails.com/cdn/shop/products/CLILB0006SA_1.jpg?v=1655886229",
+        "price": 1880,
+        "category" : "Liter Supplies"
+
+
+    },
+    {
+        "id": 6,
+        "name": "Emily Pets Lavender Scented Cat Litter",
+        "url":"https://supertails.com/cdn/shop/files/Frame_7_dcee4e1d-a652-4f93-aaed-d306a9ef02fc.png?v=1697117453",
+        "price": 399,
+        "category" : "Liter Supplies"
+
+
+    },
+    {
+        "id": 7,
+        "name": "Callas Rio and Me Activity Tree, Cat Scratching Post with Toy for Kittens & Cats",
+        "url":"https://supertails.com/cdn/shop/products/Frame10430_8a164d40-d5ba-4a4b-bd40-e6a8901fc2b3-947225.png?v=1696478972",
+        "price": 1199,
+        "category" : "Toys"
+
+
+    },
+    {
+        "id": 8,
+        "name": "TopDog Premium Ropey Octopus Toy for Dogs and Cats",
+        "url":"https://supertails.com/cdn/shop/files/image747.png?v=1696616338",
+        "price": 799,
+        "category" : "Toys"
+
 
     }
+
 ]
+// Function to display all products
+function displayAllProducts() {
+    displayProducts(arr);
+}
 
-arr.map((ele) =>{
-    console.log(ele);
-    let Img = document.createElement("img");
-    Img.src = ele.url;
+//Display filtered products
+function displayProducts(products) {
+    container.innerHTML = '';
 
-    let name = document.createElement("h4");
-    name.innerText = ele.name;
+    // Append the products while looping into each objects in the arr
+    products.forEach((ele) => {
+        let Img = document.createElement("img");
+        Img.src = ele.url;
 
-    let price = document.createElement("h3");
-    price.innerText = ele.price;
+        let name = document.createElement("h4");
+        name.innerText = ele.name;
 
-    let button = document.createElement("button");
-    button.innerText = "Add to Cart"
+        let price = document.createElement("h3");
+        price.innerText = "₹" + ele.price;
 
-    let div = document.createElement("div")
-    div.append(Img, name, price, button)
+        let category = document.createElement("p");
+        category.innerText = ele.category;
 
-    container.appendChild(div);
-    
+        let button = document.createElement("button");
+        button.innerText = "Add to Cart";
 
+        function addTocart() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-})
+            const productDetails = {
+                id: ele.id,
+                name: ele.name,
+                price: ele.price,
+                url: ele.url
+            };
+            cartItems.push(productDetails);
 
+            localStorage.setItem('cart', JSON.stringify(cartItems));
 
+            alert(`Product "${ele.name}" added to cart!`);
+        }
 
+        button.addEventListener("click", addTocart);
+
+        let div = document.createElement("div");
+        div.append(Img, name, category, price, button);
+
+        container.append(div);
+    });
+}
+// Show all the products when the page is loaded
+window.onload = function () {
+    displayAllProducts();
+};
+let selectedCategoryBox = null;
+
+// filter
+function handleFilter(element) {
+        // Reset bg color back to original
+        if (selectedCategoryBox !== null) {
+            selectedCategoryBox.style.border = '';
+        }
+
+        // Set bg color for the filtered category div
+        element.style.border = "1px solid black";
+        selectedCategoryBox = element; 
+        
+
+        var category = element.id;
+
+        var filterList = arr.filter(function (ele) {
+            return ele.category == category;
+        });
+
+        displayProducts(filterList);
+    }
 </script>
