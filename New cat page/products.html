@@ -69,7 +69,7 @@ button{
     width: 60%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     margin: auto;
 }
 #category_box>div>img{
@@ -102,6 +102,10 @@ button{
     <div><a href="cart.html"> cart</a></div>
   </div>
   <div id="category_box">
+    <div class="select_category" onclick="removeFilter(this)" id="all">
+        <img src="https://static.vecteezy.com/system/resources/previews/004/191/094/original/pet-supplies-glyph-icon-animal-food-products-in-bowl-package-dog-cat-treat-e-commerce-department-online-shopping-categories-silhouette-symbol-negative-space-isolated-illustration-vector.jpg">
+        <h3>All Items</h3>
+    </div>
     <div class="select_category" onclick="handleFilter(this)" id="Food">
         <img src="https://images.assetsdelivery.com/compings_v2/anatolir/anatolir2205/anatolir220500507.jpg">
         <h3>Food</h3>
@@ -208,6 +212,8 @@ button{
     }
 
 ]
+
+
 // Function to display all products
 function displayAllProducts() {
     displayProducts(arr);
@@ -215,7 +221,7 @@ function displayAllProducts() {
 
 //Display filtered products
 function displayProducts(products) {
-    container.innerHTML = '';
+    container.innerHTML = "";
 
     // Append the products while looping into each objects in the arr
     products.forEach((ele) => {
@@ -258,6 +264,7 @@ function displayProducts(products) {
         container.append(div);
     });
 }
+
 // Show all the products when the page is loaded
 window.onload = function () {
     displayAllProducts();
@@ -266,22 +273,26 @@ let selectedCategoryBox = null;
 
 // filter
 function handleFilter(element) {
-        // Reset bg color back to original
-        if (selectedCategoryBox !== null) {
-            selectedCategoryBox.style.border = '';
-        }
-
-        // Set bg color for the filtered category div
-        element.style.border = "1px solid black";
-        selectedCategoryBox = element; 
-        
-
-        var category = element.id;
-
-        var filterList = arr.filter(function (ele) {
-            return ele.category == category;
-        });
-
-        displayProducts(filterList);
+    // Reset border for the previously selected category box
+    if (selectedCategoryBox !== null) {
+        selectedCategoryBox.style.border = '';
     }
+
+    // Set border for the newly selected category box
+    element.style.border = "1px solid black";
+    selectedCategoryBox = element;
+
+    var category = element.id;
+
+    var filterList = arr.filter(function (ele) {
+        return ele.category == category;
+    });
+
+    displayProducts(filterList);
+}
+
+function removeFilter() {
+    displayAllProducts(arr);
+}
+
 </script>
