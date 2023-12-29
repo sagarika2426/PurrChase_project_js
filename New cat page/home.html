@@ -35,7 +35,7 @@
 #links a {
   text-decoration: none;
   color: black;
-  font-size: 28px
+  font-size: 23px
 }
 
 #container{
@@ -108,10 +108,12 @@ width: 900px;
 }
 #AboutUs{
     width: 95%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: auto;
     text-align: center;
     margin-top: 20px;
+    background-color: beige;
+    padding: 10px;
 }
 
 #products{
@@ -159,6 +161,28 @@ button{
     border-radius: 10px;
 
 }
+#adopt_container{
+  margin-top: 20px;
+  display: flex;
+  /* border: 1px solid black; */
+  padding: 15px;
+  /* height: 600px; */
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+  /* border: 1px solid black; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+#adopt_container>div{
+  width: 48%;
+  height: 100%;
+  /* border: 1px solid red; */
+  margin: auto;
+  
+}
+img{
+  width: 480px;;
+}
 
   </style>
 </head>
@@ -166,7 +190,7 @@ button{
   <!-- Navbar -->
   <div id="links">
     <div><img src="https://us.123rf.com/450wm/zhanna26/zhanna261709/zhanna26170900035/85712562-black-silhouette-of-cat-vector-illustration.jpg?ver=6"></div>
-    <div><a href="homepage.html"  style="text-decoration: underline;">Home</a></div>
+    <div><a href="home.html"  style="text-decoration: underline;">Home</a></div>
     <div > <a href="products.html">Products</a></div>
     <div><a href="form.html">Put for Adoption</a></div>
     <div><a href="Listed.html">Adoption Listing</a></div>
@@ -187,49 +211,44 @@ button{
     <p>At the heart of PurrChase is a passion for cats. Whether you're a devoted cat parent seeking high-quality products for your fur babies or someone looking to provide a loving forever home through adoption, PurrChase is your one-stop destination.</p>
  </div>
 
-<div id="products">
-    <h2>Best Sellers</h2>
-    <div id="bestsellers">
-        <div>
-            <div><img src="https://supertails.com/cdn/shop/products/61HcCwYJDWL._SL1000.jpg?v=1700817567"></div>
-            <div id="best-info"><h4>Whiskas Ocean Fish Flavour Adult Cat Dry Food</h4>
-                <h3>₹1,008</h3>
-                <p>MRP ₹2,720</p>
-            </div>
-            <button>Add to cart</button>
-            
-        </div>
-        <div>
-            <div><img src="https://supertails.com/cdn/shop/products/CFODF0010AG_1.jpg?v=1696469762"></div>
-            <div id="best-info"><h4>Arden Grange Fresh Chicken & Potato Kitten Dry Food</h4>
-                <h3>₹599</h3>
-                <p>MRP ₹630</p>
-            </div>
-            <button>Add to cart</button>
-            
-        </div>
-        <div>
-            <div><img src="https://supertails.com/cdn/shop/products/1_c7ef34f5-8efc-4fe1-9bc1-331c5d35da09.jpg?v=1696598947"></div>
-            <div id="best-info"><h4>Purepet Lavender Scented Clumping Cat Litter</h4>
-                <h3>₹314</h3>
-                <p>MRP ₹680</p>
-            </div>
-            <button>Add to cart</button>
-            
-        </div>
-        <div>
-            <div><img src="https://supertails.com/cdn/shop/products/1_c7ef34f5-8efc-4fe1-9bc1-331c5d35da09.jpg?v=1696598947"></div>
-            <div id="best-info"><h3>Purepet Lavender Scented Clumping Cat Litter</h3>
-                <h2>₹314</h2>
-                <p>MRP ₹680</p>
-            </div>
-            <button>Add to cart</button>
-            
-        </div>
+ <div id="adopt_container" style="border-bottom-left-radius: 50px;">
+  <div>
 
+    <h3>Cat Supplies: The Purrfect One-stop Shop For Every Cat Parent</h3><br>
+    <p>we simplify your search for the best cat products online. Explore a variety of toys, nutritious meals, accessories, grooming items, treats, and litter, all delivered to your doorstep. Your cat's needs, met effortlessly!
+    </p>
+    
+  </div>
+  <div>
+    <img src="https://images.summitmedia-digital.com/sap/images/2019/12/02/spot-purina-shutter-1159415002-mainimage-1-1575278367.jpg">
+    <!-- <img src="https://www.humanesocietymiami.org/wp-content/uploads/2020/04/Adopt-a-shelter-pet-today_cat-2000px.jpg"> -->
+  </div>
+</div>
+<div id="adopt_container" style="border-bottom-right-radius: 50px;">
+  
+  <div>
+    <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2020_32/3402673/cat-food-kr-2x1-tease-200806.jpg">
+    <!-- <img src="https://www.humanesocietymiami.org/wp-content/uploads/2020/04/Adopt-a-shelter-pet-today_cat-2000px.jpg"> -->
+  </div>
+  <div>
 
-    </div>
+    <h3>Nutritious and Healthy Cat Food</h3><br>
+    <p>Choosing the right cat food is essential for pet parents. Consider factors like age, breed, and activity level when deciding between wet and dry food. Prioritize your cat's dietary requirements and taste preferences for optimal nutrition.</p>
+    
+  </div>
+</div>
+<div id="adopt_container" style="border-bottom-left-radius: 50px;">
+  <div>
 
+    <h3>Making Playtime Fun</h3><br>
+    <p>
+      To prevent your kitty from becoming bored and engaging in destructive behavior, provide a variety of toys for both physical exercise and mental stimulation. Rotate toys regularly, offering options like rope and feather toys in the morning and calming snuggle toys at night. This helps channel your cat's energy positively and encourages calm behavior.</p>
+    
+  </div>
+  <div>
+    <img src="https://www.marthastewart.com/thmb/olgJmSzOD4Jgfa07bLZV741U2FU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cat-playing-getty-845697720-3ca118e58ba0443995c897c4de64ae5e.jpg">
+    <!-- <img src="https://www.humanesocietymiami.org/wp-content/uploads/2020/04/Adopt-a-shelter-pet-today_cat-2000px.jpg"> -->
+  </div>
 </div>
   
 </body>
