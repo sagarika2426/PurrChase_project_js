@@ -32,35 +32,15 @@
   border-radius: 50px;
 }
 
-
-#cart_container{
-   
-    display: grid;
-    width: 100%;
-    margin: auto;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, auto);
-    gap: 40px;
-    /* justify-content: center; */
-    /* border: px solid green; */
-    text-align: center;
-    margin-top: 30px;
-
-
-}
-#cart_container>div{
-    border: 1px solid green;
-}
-
-#cart_container>div>img{
-    width: 200px;
-}
 button{
     padding: 10px 10px;
     background-color: rgb(167, 10, 10);
     border: 0px;
     border-radius: 10px;
     color: white;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
 }
 
@@ -69,10 +49,83 @@ button{
     font-size: 23px;
     font-weight: 700;
     width: 410px;
-    padding: 25px 10px 20px 20px ;
-    margin-left: 900px;
+    padding: 25px 10px 10px 20px ;
+   
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    border-radius: 16px;
 }
+#checkout_btn{
+    cursor: pointer;
+    background-color: green;
+    padding: 15px 40px;
+    font-weight: 400;
+    font-size: 16px;
+   
+}
+#checkout{
+    /* background: beige; */
+    /* border: 1px solid black; */
+    text-align: end;
+    padding: 20px;
+    margin-left: 734px;
+}
+#cart_logo>a>img{
+    width: 80px;
+    border-radius: 50px;
+}
+
+#cart_container{
+   
+   display: grid;
+   width: 100%;
+   margin: auto;
+   grid-template-columns: repeat(5, 1fr);
+   grid-template-rows: repeat(3, auto);
+   gap: 30px;
+   /* justify-content: center; */
+   /* border: px solid green; */
+   text-align: center;
+   margin-top: 30px;
+
+
+}
+#cart_container>div{
+   /* border: 1px solid green; */
+   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+   border-radius: 16px;
+}
+
+#cart_container>div>img{
+   width: 200px;
+   margin-top: 10px;
+}
+.price{
+    margin: 5px;
+    color: red;
+}
+p{
+    margin-top: 0px;
+
+
+}
+.infobox{
+    height: 130px;
+   background-color: beige;
+   padding: 10px;
+}
+h4{
+    margin: 5px;
+}
+.empty-cart-message {
+        font-weight: bold;
+        color: red;
+    
+}
+#total{
+        display: flex;
+}
+
+
 
     </style>
 </head>
@@ -84,21 +137,36 @@ button{
     <div > <a href="products.html">Products</a></div>
     <div><a href="form.html">Put for Adoption</a></div>
     <div><a href="Listed.html">Adoption Listing</a></div>
-    <div> <a href="cart.html"  style="text-decoration: underline" >Cart</a></div>
+    <div id="cart_logo"> <a href="cart.html"  style="text-decoration: underline" ><img src="https://w7.pngwing.com/pngs/833/426/png-transparent-black-shopping-cart-icon-for-free-black-shopping-cart-icon.png"></a></div>
   </div>
-    <div>
+
+    <div id="total">
         <div id="total_amount">Total Amount: $0</div>
-        <div id="cart_container"></div>
+        <div id="checkout"><button id="checkout_btn" onclick="PaymentPage()">Checkout</button></div>
+        
     </div>
+    <div id="cart_container"></div>
+
+    
    
 </body>
 </html>
 
+
 <script>
-     var totalAmount = 0; // Declare totalAmount outside the displayData function
+var totalAmount = 0; // Declare totalAmount outside the displayData function
 
 var DataArr = JSON.parse(localStorage.getItem("cart"));
 displayData(DataArr);
+
+if (DataArr && DataArr.length > 0) {
+    displayData(DataArr);
+} else {
+    var emptyCartMessage = document.createElement("h2");
+    emptyCartMessage.innerText = "Your cart is empty. Add products to view here.";
+    emptyCartMessage.className = "empty-cart-message";
+    document.querySelector("#cart_container").appendChild(emptyCartMessage);
+}
 
 function displayData(DataArr) {
     document.querySelector("#cart_container").innerHTML = "";
@@ -112,16 +180,35 @@ function displayData(DataArr) {
         name.innerText = ele.name;
 
         let price = document.createElement("h3");
-        price.innerText = "₹"+ ele.price;
+        price.className = "price"
+        price.innerText = "₹" + ele.price;
 
-        totalAmount += Number(ele.price);
+        let quantityLabel = document.createElement("p");
+        quantityLabel.innerText = "Quantity:";
+        
+        let quantityInput = document.createElement("input");
+        quantityInput.type = "number";
+        quantityInput.value = ele.quantity || 1; // Default to 1 if no quantity is set
+        quantityInput.min = 1;
+        quantityInput.addEventListener("change", updateQuantity);
+
+        totalAmount += Number(ele.price) * Number(quantityInput.value);
 
         let remove_btn = document.createElement("button");
         remove_btn.innerText = "Remove from cart";
         remove_btn.addEventListener("click", removed);
 
+        function updateQuantity() {
+            totalAmount -= Number(ele.price) * Number(quantityInput.value);
+            ele.quantity = quantityInput.value;
+
+            localStorage.setItem("cart", JSON.stringify(DataArr));
+            displayData(DataArr);
+            updateTotalAmount();
+        }
+
         function removed() {
-            totalAmount -= Number(ele.price);
+            totalAmount -= Number(ele.price) * Number(ele.quantity);
             var removed_data = DataArr.filter(function (ele, i) {
                 return i !== index;
             });
@@ -131,10 +218,14 @@ function displayData(DataArr) {
             updateTotalAmount();
         }
 
-        let div = document.createElement("div");
-        div.append(Img, name, price, remove_btn);
+        let div1 = document.createElement("div");
+        div1.className = "infobox";
+        div1.append(name, price, quantityLabel, quantityInput)
+        let div2 = document.createElement("div");
+        div2.append(Img, div1, remove_btn)
+    
 
-        document.querySelector("#cart_container").append(div);
+        document.querySelector("#cart_container").append(div2);
     });
 
     updateTotalAmount();
@@ -142,8 +233,18 @@ function displayData(DataArr) {
 
 function updateTotalAmount() {
     document.querySelector("#total_amount").innerText =
-        "Total Amount: " + "₹"+  Number(totalAmount);
+        "Total Amount: " + "₹" + Number(totalAmount);
 }
+
 console.log(typeof(totalAmount))
 console.log((totalAmount))
+
+function PaymentPage() {
+    // Store the total amount in local storage
+    localStorage.setItem('totalAmount', totalAmount);
+
+    // Redirect to the payment.html page
+    window.location.href = "payment.html";
+}
+
 </script>
