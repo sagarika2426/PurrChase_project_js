@@ -40,7 +40,7 @@
     margin: auto;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, auto);
-    gap: 40px;
+    gap: 30px;
     /* justify-content: center; */
     /* border: px solid green; */
     text-align: center;
@@ -49,35 +49,60 @@
 
 }
 #container>div{
-    border: 1px solid green;
+    /* border: 1px solid green; */
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    border-radius: 16px;
 }
 
 #container>div>img{
     width: 200px;
+    margin-top: 10px;
 }
 button{
-    padding: 10px 50px;
+    padding: 10px 75px;
     background-color: orange;
     border: 0px;
     border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-weight: 200;
 
+}
+button:hover{
+    background-color: rgb(45, 142, 0);
+    color: white;
+
+}
+h3{
+    margin-top :-5px;
 }
 
 /* category box */
 #category_box{
-    border: 1px solid black;
-    width: 60%;
+    
+    width: 50%;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin: auto;
+    background-color: white;
+    margin-top: 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
+    padding: 20px;
+   
 }
 #category_box>div>img{
-    width: 130px;
+    width: 140px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 #category_box>div{
     margin: auto;
     text-align: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    
     /* border: 1px solid red; */
 }
 #category_box>div>h3{
@@ -86,7 +111,38 @@ button{
 .select_category{
     cursor: pointer;
 }
+#category_box>div:hover{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
 
+.price{
+    margin: 5px;
+    color: red;
+}
+p{
+    color: grey;
+    margin-top: 0px;
+
+
+}
+.infobox{
+    height: 110px;
+   background-color: beige;
+   padding: 10px;
+}
+h4{
+    margin: 5px;
+}
+
+#category_main{
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    margin-bottom: 20px;
+
+}
+.poster_img{
+    margin-top: 10px;
+}
 
 
     </style>
@@ -101,7 +157,13 @@ button{
     <div><a href="Listed.html">Adoption Listing</a></div>
     <div><a href="cart.html"> cart</a></div>
   </div>
-  <div id="category_box">
+
+  <div id="category_main">
+    <div class="poster_img">
+        <img src="https://img.freepik.com/premium-photo/cat-eating-dry-food-white_136670-1599.jpg" width="300px">
+    </div>
+    <div id="category_box">
+
     <div class="select_category" onclick="removeFilter(this)" id="all">
         <img src="https://static.vecteezy.com/system/resources/previews/004/191/094/original/pet-supplies-glyph-icon-animal-food-products-in-bowl-package-dog-cat-treat-e-commerce-department-online-shopping-categories-silhouette-symbol-negative-space-isolated-illustration-vector.jpg">
         <h3>All Items</h3>
@@ -117,6 +179,11 @@ button{
     <div  class="select_category" onclick="handleFilter(this)" id="Toys">
         <img src="https://www.shutterstock.com/image-vector/cat-toys-icon-set-style-600nw-2371892131.jpg">
         <h3>Toys</h3>
+    </div>
+
+    </div>
+    <div class="poster_img">
+        <img src="https://w0.peakpx.com/wallpaper/158/162/HD-wallpaper-kitten-ball-white-cat-animal-blue-sweet.jpg" width="300px">
     </div>
   </div>
 
@@ -194,7 +261,7 @@ button{
     },
     {
         "id": 7,
-        "name": "Callas Rio and Me Activity Tree, Cat Scratching Post with Toy for Kittens & Cats",
+        "name": "Callas Rio Activity Tree, Cat Scratching for Kittens & Cats",
         "url":"https://supertails.com/cdn/shop/products/Frame10430_8a164d40-d5ba-4a4b-bd40-e6a8901fc2b3-947225.png?v=1696478972",
         "price": 1199,
         "category" : "Toys"
@@ -232,6 +299,7 @@ function displayProducts(products) {
         name.innerText = ele.name;
 
         let price = document.createElement("h3");
+        price.className = "price"
         price.innerText = "₹" + ele.price;
 
         let category = document.createElement("p");
@@ -258,10 +326,13 @@ function displayProducts(products) {
 
         button.addEventListener("click", addTocart);
 
-        let div = document.createElement("div");
-        div.append(Img, name, category, price, button);
+        let div1 = document.createElement("div");
+        div1.className = "infobox"
+        div1.append(name, category, price)
+        let div2 = document.createElement("div");
+        div2.append(Img,div1, button);
 
-        container.append(div);
+        container.append(div2);
     });
 }
 
@@ -279,7 +350,7 @@ function handleFilter(element) {
     }
 
     // Set border for the newly selected category box
-    element.style.border = "1px solid black";
+    element.style.border = "1px solid grey";
     selectedCategoryBox = element;
 
     var category = element.id;
