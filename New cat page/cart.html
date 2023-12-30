@@ -6,7 +6,7 @@
     <title>Document</title>
     <style>
         #links {
-  background-color:rgb(196 244 251);
+  background-color:rgb(251, 196, 196);
   
   display: flex;
   justify-content: space-evenly;
@@ -14,6 +14,9 @@
   padding-top: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   align-content: center;
+}
+body{
+  background-color: #f4fbbd40;
 }
 
 #links > div {
@@ -70,8 +73,10 @@ button{
     margin-left: 734px;
 }
 #cart_logo>a>img{
-    width: 80px;
-    border-radius: 50px;
+    width: 60px;
+    border: 5px solid black;
+    border-radius: 30px;
+    padding: 5px;
 }
 
 #cart_container{
@@ -124,6 +129,39 @@ h4{
 #total{
         display: flex;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#footer {
+    background-color:rgb(203, 203, 203);
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+#address, #contact, #social-icons {
+    margin-bottom: 20px;
+}
+
+#social-icons a {
+    margin-right: 10px;
+}
+
+#social-icons img {
+    width: 40px;
+    height: 40px;
+}
+.empty-cart-message {
+    font-weight: bold;
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 230px;
+    font-size: x-large;
+}
 
 
 
@@ -137,7 +175,7 @@ h4{
     <div > <a href="products.html">Products</a></div>
     <div><a href="form.html">Put for Adoption</a></div>
     <div><a href="Listed.html">Adoption Listing</a></div>
-    <div id="cart_logo"> <a href="cart.html"  style="text-decoration: underline" ><img src="https://w7.pngwing.com/pngs/833/426/png-transparent-black-shopping-cart-icon-for-free-black-shopping-cart-icon.png"></a></div>
+    <div id="cart_logo"> <a href="cart.html"  style="text-decoration: underline" ><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"></a></div>
   </div>
 
     <div id="total">
@@ -145,7 +183,27 @@ h4{
         <div id="checkout"><button id="checkout_btn" onclick="PaymentPage()">Checkout</button></div>
         
     </div>
+    <div id="empty-cart"></div>
     <div id="cart_container"></div>
+    <div id="footer">
+        <div id="address">
+            <h4>Company Address:</h4>
+            <p>Your Company Street, City, Country</p>
+        </div>
+      
+        <div id="contact">
+            <h4>Contact Number:</h4>
+            <p>+1 (123) 456-7890</p>
+        </div>
+      
+        <div id="social-icons">
+            <h4>Follow Us:</h4><br>
+           
+            <a href="" target="_blank"><img src="https://freepngimg.com/save/122260-logo-instagram-free-transparent-image-hq/700x700" alt="Instagram"></a>
+            <a ><img src="https://cdn3.iconfinder.com/data/icons/picons-social/57/46-facebook-512.png" alt="Facebook"></a>
+        </div>
+        </div>
+    
 
     
    
@@ -163,9 +221,9 @@ if (DataArr && DataArr.length > 0) {
     displayData(DataArr);
 } else {
     var emptyCartMessage = document.createElement("h2");
-    emptyCartMessage.innerText = "Your cart is empty. Add products to view here.";
+    emptyCartMessage.innerText = "Uh-oh! Your cart is empty. Add products to view here.";
     emptyCartMessage.className = "empty-cart-message";
-    document.querySelector("#cart_container").appendChild(emptyCartMessage);
+    document.querySelector("#empty-cart").appendChild(emptyCartMessage);
 }
 
 function displayData(DataArr) {
