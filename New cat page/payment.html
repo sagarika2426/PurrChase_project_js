@@ -7,20 +7,66 @@
 </head>
 <style>
     button{
-        background-color: rgb(0 245 0);
-    padding: 9px 37px;
-    border-radius: 16px;
+        background-color: green;
+    padding: 10px 50px;
+    border-radius: 20px;
+    color: white;
+    margin-top: 0px;
     }
 
     #payment_div{
-        border: 1px solid black;
+        border: 5px solid black;
+        margin: auto;
+        text-align: center;
+        background-color: rgb(237, 207, 207);
+        padding: 30px;
+
+        width: 60%;
+        margin-top: 50px;
+
     }
+    #payment_div>p{
+
+        
+        font-size: x-large;
+    }
+    #payment_div h1 {
+        margin-bottom: 10px;
+    }
+  
+ 
+    /* body {
+        text-align: center; 
+    } */
+
+    img {
+        margin-bottom: 0px;
+        margin: 20px;
+        margin-left: auto;
+        margin-right: auto; 
+        display: block; 
+    }
+
+       a{
+        border: 1px solid black;
+        padding: 5px 20px;
+        text-decoration: none;
+        background-color: rgb(182, 1, 1);
+        color: white;
+        border-radius: 16px;
+    
+    }
+  
+  
 </style>
 <body>
+    <div><a href="cart.html">Back</a></div>
     <div id="payment_div">
-        <h1>Payment Page</h1>
+        <h1>Checkout Page</h1>
         <p>Total Amount: ₹<span id="totalAmount"></span></p>
-        <button id="rzp-button1">Pay</button>
+        <img src="https://cdn.icon-icons.com/icons2/3819/PNG/512/web_ui_payment_card_icon_233592.png" width="100px" />
+        <button id="rzp-button1">Continue with Payment</button>
+      
     </div>
     
         
@@ -36,7 +82,7 @@ var options = {
     "description": "Test Transaction",
     "image": "https://example.com/your_logo",
     // "order_id": "order_" + new Date().getTime(), //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "order_id": "order_NHm9se6elfLjnT",
+    "order_id": "order_NIboTdB8fFVwdz",
     "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
     "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
         "name": "Sagarika Sahoo", //your customer's name
