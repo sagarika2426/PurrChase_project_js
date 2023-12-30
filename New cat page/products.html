@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+  background-color: #f4fbbd40;
+}
+
+            * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
         #links {
-  background-color:rgb(196 244 251);
+  background-color: rgb(251, 196, 196);
   
   display: flex;
   justify-content: space-evenly;
@@ -52,6 +61,7 @@
     /* border: 1px solid green; */
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
     border-radius: 16px;
+    background-color: white;
 }
 
 #container>div>img{
@@ -102,6 +112,7 @@ h3{
     text-align: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
+    padding: 10px;
     
     /* border: 1px solid red; */
 }
@@ -127,7 +138,7 @@ p{
 }
 .infobox{
     height: 110px;
-   background-color: beige;
+   background-color: #ffe2e2;;
    padding: 10px;
 }
 h4{
@@ -138,11 +149,35 @@ h4{
     display: flex;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
     margin-bottom: 20px;
+    background-color: white;
 
 }
 .poster_img{
     margin-top: 10px;
 }
+#cart_logo>a>img{
+    width: 50px;
+}
+#footer {
+    background-color:rgb(203, 203, 203);
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+#address, #contact, #social-icons {
+    margin-bottom: 20px;
+}
+
+#social-icons a {
+    margin-right: 10px;
+}
+
+#social-icons img {
+    width: 40px; /* Adjust the size of social media icons as needed */
+    height: 40px;
+}
+
 
 
     </style>
@@ -155,7 +190,7 @@ h4{
     <div > <a href="products.html" style="text-decoration: underline">Products</a></div>
     <div><a href="form.html">Put for Adoption</a></div>
     <div><a href="Listed.html">Adoption Listing</a></div>
-    <div><a href="cart.html"> cart</a></div>
+    <div id="cart_logo"> <a href="cart.html"  style="text-decoration: underline" ><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" ></a></div>
   </div>
 
   <div id="category_main">
@@ -164,30 +199,49 @@ h4{
     </div>
     <div id="category_box">
 
-    <div class="select_category" onclick="removeFilter(this)" id="all">
-        <img src="https://static.vecteezy.com/system/resources/previews/004/191/094/original/pet-supplies-glyph-icon-animal-food-products-in-bowl-package-dog-cat-treat-e-commerce-department-online-shopping-categories-silhouette-symbol-negative-space-isolated-illustration-vector.jpg">
-        <h3>All Items</h3>
-    </div>
-    <div class="select_category" onclick="handleFilter(this)" id="Food">
-        <img src="https://images.assetsdelivery.com/compings_v2/anatolir/anatolir2205/anatolir220500507.jpg">
-        <h3>Food</h3>
-    </div>
-    <div  class="select_category" onclick="handleFilter(this)" id="Liter Supplies">
-        <img src="https://st4.depositphotos.com/37452302/39030/v/450/depositphotos_390306158-stock-illustration-cutout-silhouette-cat-litter-toilet.jpg" width="250px">
-        <h3>Liter Supplies</h3>
-    </div>
-    <div  class="select_category" onclick="handleFilter(this)" id="Toys">
-        <img src="https://www.shutterstock.com/image-vector/cat-toys-icon-set-style-600nw-2371892131.jpg">
-        <h3>Toys</h3>
-    </div>
+        <div class="select_category" onclick="removeFilter(this)" id="all">
+            <img src="https://static.vecteezy.com/system/resources/previews/004/191/094/original/pet-supplies-glyph-icon-animal-food-products-in-bowl-package-dog-cat-treat-e-commerce-department-online-shopping-categories-silhouette-symbol-negative-space-isolated-illustration-vector.jpg">
+            <h3>All Items</h3>
+        </div>
+        <div class="select_category" onclick="handleFilter(this)" id="Food">
+            <img src="https://images.assetsdelivery.com/compings_v2/anatolir/anatolir2205/anatolir220500507.jpg">
+            <h3>Food</h3>
+        </div>
+        <div  class="select_category" onclick="handleFilter(this)" id="Liter Supplies">
+            <img src="https://st4.depositphotos.com/37452302/39030/v/450/depositphotos_390306158-stock-illustration-cutout-silhouette-cat-litter-toilet.jpg" width="250px">
+            <h3>Liter Supplies</h3>
+        </div>
+        <div  class="select_category" onclick="handleFilter(this)" id="Toys">
+            <img src="https://www.shutterstock.com/image-vector/cat-toys-icon-set-style-600nw-2371892131.jpg">
+            <h3>Toys</h3>
+        </div>
 
-    </div>
+        </div>
     <div class="poster_img">
         <img src="https://w0.peakpx.com/wallpaper/158/162/HD-wallpaper-kitten-ball-white-cat-animal-blue-sweet.jpg" width="300px">
     </div>
   </div>
 
   <div id="container"></div>
+
+  <div id="footer">
+    <div id="address">
+        <h4>Company Address:</h4>
+        <p>Your Company Street, City, Country</p>
+    </div>
+  
+    <div id="contact">
+        <h4>Contact Number:</h4>
+        <p>+1 (123) 456-7890</p>
+    </div>
+  
+    <div id="social-icons">
+        <h4>Follow Us:</h4><br>
+       
+        <a href="" target="_blank"><img src="https://freepngimg.com/save/122260-logo-instagram-free-transparent-image-hq/700x700" alt="Instagram"></a>
+        <a ><img src="https://cdn3.iconfinder.com/data/icons/picons-social/57/46-facebook-512.png" alt="Facebook"></a>
+    </div>
+    </div>
 
 </body>
 </html>
@@ -350,7 +404,7 @@ function handleFilter(element) {
     }
 
     // Set border for the newly selected category box
-    element.style.border = "1px solid grey";
+    element.style.border = "3px solid grey";
     selectedCategoryBox = element;
 
     var category = element.id;
@@ -362,8 +416,19 @@ function handleFilter(element) {
     displayProducts(filterList);
 }
 
-function removeFilter() {
+function removeFilter(element) {
     displayAllProducts(arr);
+
+    // Reset border for the previously selected category box
+    if (selectedCategoryBox !== null) {
+        selectedCategoryBox.style.border = '';
+    }
+
+    // Set selectedCategoryBox to null
+    selectedCategoryBox = null;
+
+    // Set border for the "All" category box
+    element.style.border = "3px solid grey";
 }
 
 </script>
