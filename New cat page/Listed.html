@@ -8,7 +8,7 @@
 </head>
 <style>
     #links {
-  background-color:rgb(196 244 251);
+  background-color:rgb(251, 196, 196);
   
   display: flex;
   justify-content: space-evenly;
@@ -54,6 +54,7 @@
     border-radius: 10px;
     text-align: center;
     margin: auto;
+    background-color: white;
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset; */
   }
   img{
@@ -85,19 +86,50 @@
   }
   #filter{
     display: flex   ;
-    background-color: gainsboro;
+   
   }
   #filter>select{
     
      margin: 15px 5px;
   font-size: 16px;
   padding: 0.75%;
-  border: 1px solid black;
+  border: 2px solid black;
   width: 200px;
   border-radius: 5px;
   
   }
-  
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#cart_logo>a>img{
+    width: 50px;
+    height: auto;
+}
+body{
+  background-color: #f4fbbd40;
+}
+#footer {
+    background-color:rgb(203, 203, 203);
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+#address, #contact, #social-icons {
+    margin-bottom: 20px;
+}
+
+#social-icons a {
+    margin-right: 10px;
+}
+
+#social-icons img {
+    width: 40px; /* Adjust the size of social media icons as needed */
+    height: 40px;
+}
+
 
   
   </style>
@@ -108,9 +140,9 @@
     <div><img src="https://us.123rf.com/450wm/zhanna26/zhanna261709/zhanna26170900035/85712562-black-silhouette-of-cat-vector-illustration.jpg?ver=6"></div>
     <div><a href="home.html" >Home</a></div>
     <div > <a href="products.html">Products</a></div>
-    <div><a href="form.html"  style="text-decoration: underline;">Put for Adoption</a></div>
-    <div><a href="Listed.html">Adoption Listing</a></div>
-    <div><a href="cart.html">Cart</a></div>
+    <div><a href="form.html" >Put for Adoption</a></div>
+    <div><a href="Listed.html" style="text-decoration: underline;">Adoption Listing</a></div>
+    <div id="cart_logo"> <a href="cart.html" ><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"></a></div>
   </div>
   <div id="filter">
     <select class="filter" id="sort_age" onchange="handleAgeSort()">
@@ -135,6 +167,24 @@
     <option value="Bengal">Bengal</option>
   </select></div>
   <div id="container"></div>
+  <div id="footer">
+    <div id="address">
+        <h4>Company Address:</h4>
+        <p>Your Company Street, City, Country</p>
+    </div>
+  
+    <div id="contact">
+        <h4>Contact Number:</h4>
+        <p>+1 (123) 456-7890</p>
+    </div>
+  
+    <div id="social-icons">
+        <h4>Follow Us:</h4><br>
+       
+        <a href="" target="_blank"><img src="https://freepngimg.com/save/122260-logo-instagram-free-transparent-image-hq/700x700" alt="Instagram"></a>
+        <a ><img src="https://cdn3.iconfinder.com/data/icons/picons-social/57/46-facebook-512.png" alt="Facebook"></a>
+    </div>
+    </div>
   
 </body>
 </html>
