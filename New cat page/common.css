@@ -1,0 +1,50 @@
+#footer {
+    background-color:rgb(203, 203, 203);
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+#address, #contact, #social-icons {
+    margin-bottom: 20px;
+}
+
+#social-icons a {
+    margin-right: 10px;
+}
+
+#social-icons img {
+    width: 40px;
+    height: 40px;
+}
+
+#links {
+    background-color: rgb(251, 196, 196);
+    
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1%;
+    padding-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    align-content: center;
+  }
+  
+  #links > div {
+    display: flex;
+    list-style: none;
+    margin: auto;
+  }
+  #links a {
+    text-decoration: none;
+    color: black;
+    font-size: 23px
+  }
+  #links>div>img{
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+  }
+  
+  #cart_logo>a>img{
+    width: 50px;
+}
