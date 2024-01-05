@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
-    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="common.css" />
+  
   </head>
   <style>
     body{
@@ -20,42 +21,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  background-color: #f4fbbd40;
+}
 form {
-  width: 450px;
+  width: 550px;
   border: 1px solid rgb(230, 230, 230);
   margin: 3% auto;
   padding: 4%;
   background: white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-
+text-align: center;
  
   
-}
-    #links {
-  background-color:rgb(196 244 251);
-  
-  display: flex;
-  justify-content: space-evenly;
-  padding: 1%;
-  padding-top: 10px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  align-content: center;
-}
-
-#links > div {
-  display: flex;
-  list-style: none;
-  margin: auto;
-}
-#links a {
-  text-decoration: none;
-  color: black;
-  font-size: 23px;
-}
-#links>div>img{
-  height: 80px;
-  width: 80px;
-  border-radius: 50px;
 }
 
 
@@ -68,10 +46,6 @@ form {
   border-radius: 15px;
   padding: 9px 10px;
 }
-/* Navbar related css */
-
-/* Form related css */
-
 input,
 select {
   display:block;
@@ -79,25 +53,25 @@ select {
   font-size: 16px;
   padding: 2% 3%;
   border: 1px solid black;
-  width: 310px;
+  width: 330px;
   border-radius: 5px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 option {
   font-size: 22px;
+}
+#cart_logo>a>img{
+    width: 50px;
+
 }
 
   </style>
 
   <body>
     <!-- Navbar -->
-    <div id="links">
-        <div><img src="https://us.123rf.com/450wm/zhanna26/zhanna261709/zhanna26170900035/85712562-black-silhouette-of-cat-vector-illustration.jpg?ver=6"></div>
-        <div><a href="home.html" >Home</a></div>
-        <div > <a href="products.html">Products</a></div>
-        <div><a href="form.html"  style="text-decoration: underline;">Put for Adoption</a></div>
-        <div><a href="Listed.html">Adoption Listing</a></div>
-        <div><a href="cart.html">Cart</a></div>
-      </div>
+   <div id="navbar"></div>
     <form id="form">
       <h2  style="color: purple;">Enter Your Details</h2>
       <input placeholder="Enter Your Name" id="name" type="text" />
@@ -122,17 +96,25 @@ option {
         
         <option value="Male">Male</option>
         <option value="Female">Female</option>
-      <input type="text" placeholder="Upload Image of the cat" id="catImg">
+        </select>
+      
+        <h4>Upload Cat Image</h4>
+      <input type="url" id="catImg">
      
       <input id="submit" type="submit" />
     </form>
+
+    
   </body>
+  <script type="module" src="./initialize_navbar.js"></script>
+
 
   <script>
     document.querySelector("#form").addEventListener("submit", CatSubmit);
     var CatArr = JSON.parse(localStorage.getItem("CatList")) || [];
 
     function CatSubmit() {
+      alert("The details has been added to the Listing now!!!")
       event.preventDefault();
       document.querySelector("#submit").style.backgroundColor = "green";
     
@@ -150,8 +132,7 @@ option {
       CatArr.push(CatObj);
       console.log(CatArr);
       localStorage.setItem("CatList", JSON.stringify(CatArr));
-      // redirect to applied jobs
-      // window.location.href = "applied.html";
+      // redirect to listed cats
 
       document.querySelector
     }
