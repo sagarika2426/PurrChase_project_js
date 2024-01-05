@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption Form</title>
+
+    <!-- Add your existing styles here -->
+
+    <style>
+        /* Add additional styles for the adoption form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4fbbd40;
+            margin: 20px;
+        }
+
+        .adoption-form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-size: 16px;
+            background-color: rgb(88, 3, 88);
+            color: white;
+            border: 0px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+        #confirmationMessage {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            text-align: center;
+        }
+        #okayButton {
+            margin-top: 10px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            border: 0;
+            cursor: pointer;
+        }
+
+        #okayButton:hover {
+            background-color: #218838;
+        }
+        #back{
+            /* border: 1px solid black; */
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: rgb(153, 2, 2);
+            color: white;
+            border-radius: 16px;
+
+            
+
+        }
+    </style>
+</head>
+
+<body>
+    <a href="Listed.html" id="back">Back</a>
+
+    <div class="adoption-form">
+        <h2>Adoption Form</h2>
+        <p>Please provide your details to proceed with the cat adoption process.</p>
+        <form id="adoptionForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required autocomplete="off">
+
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" name="contactNumber" required autocomplete="off">
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required autocomplete="off">
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required autocomplete="off"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="confirmationMessage">
+        <p>Thank you for submitting your details! You will receive further instructions via email and contact number.</p>
+        <button id="okayButton">Okay</button>
+    </div>
+
+  
+
+</body>
+
+</html>
+<script>
+    document.getElementById("adoptionForm").addEventListener("submit", function (event) {
+   event.preventDefault();
+  
+   document.getElementById("confirmationMessage").style.display = "block";
+   });
+
+   document.getElementById("okayButton").addEventListener("click", function () {
+   // Navigate back to the "Listed.html" page
+   window.location.href = "Listed.html";
+   });
+
+</script>
