@@ -40,6 +40,10 @@ button{
     font-size: 16px;
    
 }
+
+#checkout_btn:hover{
+    background-color: rgb(1, 102, 1);
+}
 #checkout{
     /* background: beige; */
     /* border: 1px solid black; */
@@ -126,14 +130,8 @@ h4{
 </head>
 <body>
       <!-- Navbar -->
-  <div id="links">
-    <div><img src="https://us.123rf.com/450wm/zhanna26/zhanna261709/zhanna26170900035/85712562-black-silhouette-of-cat-vector-illustration.jpg?ver=6"></div>
-    <div><a href="home.html">Home</a></div>
-    <div > <a href="products.html">Products</a></div>
-    <div><a href="form.html">Put for Adoption</a></div>
-    <div><a href="Listed.html">Adoption Listing</a></div>
-    <div id="cart_logo"> <a href="cart.html"  style="text-decoration: underline" ><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"></a></div>
-  </div>
+      <div id="navbar"></div>
+
 
     <div id="total">
         <div id="total_amount">Total Amount: $0</div>
@@ -142,23 +140,9 @@ h4{
     </div>
     <div id="empty-cart"></div>
     <div id="cart_container"></div>
-    <div id="footer">
-        <div id="address">
-            <h4>Company Address:</h4>
-            <p>Your Company Street, City, Country</p>
-        </div>
-      
-        <div id="contact">
-            <h4>Contact Number:</h4>
-            <p>+1 (123) 456-7890</p>
-        </div>
-      
-        <div id="social-icons">
-            <h4>Follow Us:</h4><br>
-           
-            <a href="" target="_blank"><img src="https://freepngimg.com/save/122260-logo-instagram-free-transparent-image-hq/700x700" alt="Instagram"></a>
-            <a ><img src="https://cdn3.iconfinder.com/data/icons/picons-social/57/46-facebook-512.png" alt="Facebook"></a>
-        </div>
+
+    <!-- footer -->
+    <div id="footer-box">
         </div>
     
 
@@ -166,10 +150,17 @@ h4{
    
 </body>
 </html>
+<script type="module" src="./initialize_navbar.js"></script>
+
+<script type="module">
+    import footer from './footer.js';
+    document.getElementById("footer-box").innerHTML = footer();
+  </script>
+  
 
 
 <script>
-var totalAmount = 0; // Declare totalAmount outside the displayData function
+var totalAmount = 0; 
 
 var DataArr = JSON.parse(localStorage.getItem("cart"));
 displayData(DataArr);
@@ -177,6 +168,7 @@ displayData(DataArr);
 if (DataArr && DataArr.length > 0) {
     displayData(DataArr);
 } else {
+    // When there is no item in the cart it will show this message
     var emptyCartMessage = document.createElement("h2");
     emptyCartMessage.innerText = "Uh-oh! Your cart is empty. Add products to view here.";
     emptyCartMessage.className = "empty-cart-message";
@@ -214,7 +206,7 @@ function displayData(DataArr) {
         remove_btn.addEventListener("click", removed);
 
         function updateQuantity() {
-            totalAmount -= Number(ele.price) * Number(quantityInput.value);
+            totalAmount = Number(ele.price) * Number(quantityInput.value);
             ele.quantity = quantityInput.value;
 
             localStorage.setItem("cart", JSON.stringify(DataArr));
@@ -222,8 +214,9 @@ function displayData(DataArr) {
             updateTotalAmount();
         }
 
+        // Remove from the cart page once click on "Remove from cart"
         function removed() {
-            totalAmount -= Number(ele.price) * Number(ele.quantity);
+            totalAmount = Number(ele.price) * Number(ele.quantity);
             var removed_data = DataArr.filter(function (ele, i) {
                 return i !== index;
             });
@@ -249,17 +242,18 @@ function displayData(DataArr) {
 function updateTotalAmount() {
     document.querySelector("#total_amount").innerText =
         "Total Amount: " + "₹" + Number(totalAmount);
+        // show total amont of the products
 }
 
 console.log(typeof(totalAmount))
 console.log((totalAmount))
 
 function PaymentPage() {
-    // Store the total amount in local storage
+
     localStorage.setItem('totalAmount', totalAmount);
 
-    // Redirect to the payment.html page
-    window.location.href = "payment.html";
+    window.location.href = "payment2.html";
+    // redirect to anothe page - payment page
 }
 
 </script>
