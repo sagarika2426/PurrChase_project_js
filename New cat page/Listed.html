@@ -81,6 +81,9 @@
 #cart_logo>a>img{
     height: auto;
 }
+#login>a>img{
+  height: auto;
+}
 body{
   background-color: #f4fbbd40
 }
@@ -90,14 +93,7 @@ body{
   </style>
 <body>
   <!-- Navbar -->
- 
-  <div id="links">
-    <div><img src="https://us.123rf.com/450wm/zhanna26/zhanna261709/zhanna26170900035/85712562-black-silhouette-of-cat-vector-illustration.jpg?ver=6"></div>
-    <div><a href="home.html" >Home</a></div>
-    <div > <a href="products.html">Products</a></div>
-    <div><a href="form.html" >Put for Adoption</a></div>
-    <div><a href="Listed.html" style="text-decoration: underline;">Adoption Listing</a></div>
-    <div id="cart_logo"> <a href="cart.html" ><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"></a></div>
+  <div id="navbar">
   </div>
   <div id="filter">
     <select class="filter" id="sort_age" onchange="handleAgeSort()">
@@ -122,27 +118,20 @@ body{
     <option value="Bengal">Bengal</option>
   </select></div>
   <div id="container"></div>
-  <div id="footer">
-    <div id="address">
-        <h4>Company Address:</h4>
-        <p>Your Company Street, City, Country</p>
-    </div>
+  <div id="footer-box">
+  </div>
   
-    <div id="contact">
-        <h4>Contact Number:</h4>
-        <p>+1 (123) 456-7890</p>
-    </div>
-  
-    <div id="social-icons">
-        <h4>Follow Us:</h4><br>
-       
-        <a href="" target="_blank"><img src="https://freepngimg.com/save/122260-logo-instagram-free-transparent-image-hq/700x700" alt="Instagram"></a>
-        <a ><img src="https://cdn3.iconfinder.com/data/icons/picons-social/57/46-facebook-512.png" alt="Facebook"></a>
-    </div>
-    </div>
+
   
 </body>
 </html>
+<script type="module" src="./initialize_navbar.js"></script>
+<script type="module">
+  import footer from './footer.js';
+  document.getElementById("footer-box").innerHTML = footer();
+</script>
+
+
 
 <script>
   var DataArr = JSON.parse(localStorage.getItem("CatList"))
@@ -213,7 +202,7 @@ body{
   
   function displayData(DataArr){
   document.querySelector("#container").innerHTML = ""
-  DataArr.forEach(function(el){
+  DataArr.forEach(function(el, index){
     
       var box = document.createElement("div")
       var cat_img = document.createElement("img")
@@ -235,7 +224,19 @@ body{
       owner_contact.innerText = "Owner Contact"+ ": "+ el.ownerNum
 
       var adopt_button = document.createElement("button")
-      adopt_button.innerText = "Adopt Me"
+      adopt_button.innerText = "Adopt Me";
+      adopt_button.addEventListener("click", adopted);
+
+      function adopted() {
+        var filterList_C = DataArr.filter(function (el, i) {
+          return i !== index;
+        });
+        displayData(filterList_C);
+        localStorage.setItem("CatList", JSON.stringify(filterList_C))
+        window.location.href = "adopted.html";
+
+      }
+
 
       box.append(cat_img, cat_name,cat_breed, cat_age,cat_gen, owner_contact, adopt_button)
 
