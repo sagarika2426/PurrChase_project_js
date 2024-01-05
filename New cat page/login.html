@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="common.css">
+    <title>Login/Signup Page</title>
+
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+.container {
+    width: 400px;
+    margin: auto;
+    /* border: 1px solid black; */
+    padding: 10px;
+    margin: 20px auto 20px auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.container div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+button {
+    background-color:  #45a049;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #348338;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+h3{
+    margin: 0px;
+}
+#img-box{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+#img-box a div{
+    /* border: 1px solid black; */
+    margin: auto;
+    width: 100px;
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding:5px;
+    border-radius: 16px;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+</style>
+<body>
+     <!-- Navbar -->
+  <div id="navbar"></div>
+ 
+    <div class="container">
+        <!-- login for -->
+        <div id="loginForm">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required autocomplete="off">
+            <label for="password">Password:</label>
+            <input type="password" id="password" required autocomplete="off">
+            <button onclick="login()">Login</button>
+            <p id="signupLink">Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></p>
+        </div>
+
+        <!-- sign up form -->
+        <div id="signupForm" style="display: none;">
+            <h2>Signup</h2>
+            <label for="newUsername">Username:</label>
+            <input type="text" id="newUsername" required autocomplete="off">
+            <label for="newPassword">Password:</label>
+            <input type="password" id="newPassword" required autocomplete="off">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required autocomplete="off">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" required autocomplete="off">
+            <button onclick="signup()">Sign up</button>
+            <p id="loginLink">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+
+        <!-- loged in message -->
+        <div id="loggedInMessage" style="display: none;">
+            <h2>Welcome, <span id="loggedInUser"></span>! You are logged in.</h2><br>
+            <!-- <h3>You can now browse the <a href="products.html">Products</a>,</h3>
+
+            <h3><a href="form.html">Put for Adoption </a>or</h3>
+            <h3><a href="Listed.html">Adopt a Cat</a> </h3><br> -->
+            <div id="img-box">
+             <a href="products.html">   
+            <div>
+                <img src="https://cdn-icons-png.flaticon.com/512/7965/7965982.png">
+                <p>Browse Products</p>
+            </div>
+            </a>
+            <a href="form.html">   
+            <div>
+                <img src="https://t3.ftcdn.net/jpg/02/63/04/74/360_F_263047400_AReIHV0BYqPckVM9HUnh9czMhS4Ol2qm.jpg">
+                <p>Put for Adoption </p>
+            </div>
+            </a>
+            <a href="Listed.html">   
+            <div>
+                <img src="https://static.vecteezy.com/system/resources/previews/008/132/170/original/cat-animal-logo-with-house-logo-for-cat-adoption-in-shiloute-style-free-vector.jpg">
+                <p>Adopt a Cat</p>
+            </div>
+            </a>
+            
+            </div>
+            <br>
+            <br>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+
+<!-- footer -->
+    <div id="footer-box"></div>
+
+</body>
+</html>
+<script type="module" src="./initialize_navbar.js"></script>
+<script type="module">
+  import footer from './footer.js';
+  document.getElementById("footer-box").innerHTML = footer();
+</script>
+
+<script>
+    let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    function showSignup() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('signupForm').style.display = 'flex';
+    }
+
+    function showLogin() {
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'flex';
+    }
+
+    function login() {
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+
+        if (username && password) {
+            let userFound = false;
+
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].username === username && users[i].password === password) {
+                    currentUser = username;
+                    showLoggedInMessage();
+                    userFound = true;
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    break;
+                }
+            }
+
+            if (!userFound) {
+                alert("Incorrect username or password.");
+            }
+        } else {
+            alert("Please fill in all the required fields.");
+        }
+    }
+
+    function signup() {
+        let newUsername = document.getElementById('newUsername').value;
+        let newPassword = document.getElementById('newPassword').value;
+        let email = document.getElementById('email').value;
+        let fullName = document.getElementById('fullName').value;
+
+        if (newUsername && newPassword && email && fullName) {
+            let usernameExists = false;
+
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].username === newUsername) {
+                    usernameExists = true;
+                    break;
+                }
+            }
+
+            if (usernameExists) {
+                alert('Username already exists. Please choose a different one.');
+            } else {
+                users.push({ username: newUsername, password: newPassword, email, fullName });
+                localStorage.setItem('users', JSON.stringify(users));
+
+                currentUser = newUsername;
+                showLoggedInMessage();
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+        } else {
+            alert('Please fill in all the required fields.');
+        }
+    }
+
+    function showLoggedInMessage() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('loggedInMessage').style.display = 'block';
+        document.getElementById('loggedInUser').textContent = currentUser;
+    }
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        currentUser = null;
+        document.getElementById('loggedInMessage').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'flex';
+    }
+
+    // Check if a user is already logged in
+    if (currentUser) {
+        showLoggedInMessage();
+        // When the page loads, it checks if there is a 'currentUser' in the localStorage. 
+        // If yes, it directly calls the showLoggedInMessage() function, which displays the logged-in message and hides the login and signup forms.
+    }
+</script>
+    
