@@ -1,8 +1,10 @@
+/* footer css */
 #footer {
-    background-color:rgb(203, 203, 203);
+    background-color: rgb(229, 160, 160);
     color: black;
     padding: 20px;
     text-align: center;
+    margin-top: 20px;
 }
 
 #address, #contact, #social-icons {
@@ -17,7 +19,15 @@
     width: 40px;
     height: 40px;
 }
+#footer #address p{
+  color: black;
+}
+#footer #contact p{
+  color: black;
+}
 
+
+/* navbar css */
 #links {
     background-color: rgb(251, 196, 196);
     
@@ -33,6 +43,7 @@
     display: flex;
     list-style: none;
     margin: auto;
+    flex-direction: column;
   }
   #links a {
     text-decoration: none;
@@ -48,3 +59,13 @@
   #cart_logo>a>img{
     width: 50px;
 }
+#login>a>img{
+  width: 40px;
+}
+
+
+
+.active_page {
+  text-decoration: underline !important;
+}
+
